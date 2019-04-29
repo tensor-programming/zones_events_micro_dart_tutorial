@@ -44,13 +44,13 @@ Stream<int> streamer() async* {
 // }
 
 // void _fakeMain(List<String> args) {
-//   int x = 10;
+//   int counter = 5;
 
 //   _func() {
-//     print(x);
-//     x--;
-//     if (x != 0) {
-//       scheduleMicrotask(_func());
+//     print(counter);
+//     counter--;
+//     if (counter != 0) {
+//       Future.delayed(Duration(seconds: 2), _func);
 //     }
 //   }
 
@@ -87,7 +87,7 @@ Stream<int> streamer() async* {
 //     }
 //   }
 
-//   static void callFunc(Function func, List<String> args) {
+//   static callFunc(Function func, List<String> args) {
 //     var zone = Zone.current.fork(
 //       specification: ZoneSpecification(scheduleMicrotask: (
 //         zoneOne,
@@ -107,7 +107,7 @@ Stream<int> streamer() async* {
 //           EventLoop.run(func);
 //           return null;
 //         } else {
-//           return Timer(duration, func);
+//           return delegate.createTimer(zoneTwo, duration, () => func());
 //         }
 //       }),
 //     );
@@ -116,3 +116,4 @@ Stream<int> streamer() async* {
 //     eventLoop();
 //   }
 // }
+
